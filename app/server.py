@@ -25,7 +25,7 @@ async def download_file(url, dest):
             with open(dest, 'wb') as f: f.write(data)
 
 async def setup_learner():
-    await download_file(model_file_url, path/'models'/model_file_name')
+    await download_file(model_file_url, path/rf'models/{model_file_name}')
     learn = load_learner(path/'models', model_file_name)
     return learn
 
