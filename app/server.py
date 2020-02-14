@@ -50,7 +50,7 @@ async def analyze(request):
         response = f'{prediction[0]}! - with a probability of {probability}%'
     else:
         response = f'None of the above - the photo is closest to {prediction[0]} with a probability of {probability}%'
-    return JSONResponse({'result': response)
+    return JSONResponse({'result': response})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
