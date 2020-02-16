@@ -44,13 +44,7 @@ async def analyze(request):
     data = await request.form()
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    prediction = learn.predict(img)
-    probability = float(prediction[2][prediction[1]]) * 100
-    if  probability >= 50:
-        response = f'{prediction[0]}! - with a probability of {probability}%'
-    else:
-        response = f'None of the above - the photo is closest to {prediction[0]} with a probability of {probability}%'
-    return JSONResponse({'result': response})
+    return JSONResponse({'result': learn.predict(img)[0]})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
