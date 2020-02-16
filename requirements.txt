@@ -6,4 +6,3 @@ uvicorn
 python-multipart
 aiofiles
 aiohttp
-pillow<=7.0.0
